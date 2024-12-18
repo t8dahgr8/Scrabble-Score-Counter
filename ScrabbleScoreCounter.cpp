@@ -13,29 +13,36 @@ void vppl(int people, vector<vector<string>> &scores){//Pass by reference
     }
 
     for(int i = 0; i < people; ++i){
-        cout << scores[i][0] << "is player " << i + 1 << endl; //After assigning names, it'll give each player their player number
+        cout << scores[i][0] << " is player " << i + 1 << endl; //After assigning names, it'll give each player their player number
     }
-
+    cout << endl;
     cout << "Let's start the game!" << endl;
+    cout << endl;
+    cout << endl;
 }
 
 void Add(vector<vector<string>> &scores){
     cout << "Who would you like to add to? Enter their Player #" << endl;
     int ply;
     cin >> ply;
+    ply--;
     cout << "What score would you like to add" << endl;
     string num;
     cin >> num;
+    num;
 
     scores[ply].push_back(num);
     cout << "We have added " << num <<  " points to " << scores[ply][0] << "'s score" << endl;
+    cout << endl;
+    cout << endl;
 }
 
 
-void Replace(vector<vector <string>> &scores){
-    cout << "Who's score would you like to replace? Enter their Player #" << endl;
+void Remove(vector<vector <string>> &scores){
+    cout << "Who's score would you like to remove from? Enter their Player #" << endl;
     int ply;
     cin >> ply;
+    ply--;
     cout << "Here are the list of numbers in " << scores[ply][0] << "'s row." << endl;
 
 
@@ -47,15 +54,19 @@ void Replace(vector<vector <string>> &scores){
     int accident;
     cin >> accident;
     
-    scores[ply].erase(scores[ply].begin() + (accident - 1));
+    scores[ply].erase(scores[ply].begin() + accident);
 
     cout << "The number has been subtracted from " << scores[ply][0] << "'s total score" << endl;
+    cout << endl;
+    cout << endl;
 }
 
 void EndGame(int people, vector<vector<string>> &scores){
+    cout << endl;
+    cout << endl;
     for (int i = 0; i < people; i++)
     {
-        cout << scores[i][0] << "'s scored a total of ";
+        cout << scores[i][0] << " scored a total of ";
         int sum = 0;
         for(int j = 1; j < scores[i].size(); j++){
             sum += stoi(scores[i][j]);
@@ -77,9 +88,11 @@ int main(){
     
     bool end = false;
     while(end == false){
-        cout << "To enter in scores, type Add" << endl;
-        cout << "To replace a score, type Replace" << endl;
-        cout << "To end the game and recieve a sum of scores for each player, type End" << endl;
+        cout << "To enter in points, type 'Add'" << endl;
+        cout << "To remove points, type 'Remove'" << endl;
+        cout << "To end the game and recieve a scores for each player, type 'End'" << endl;
+        cout << endl;
+        cout << endl;
         string temp;
         cin >> temp;
 
@@ -89,8 +102,8 @@ int main(){
             Add(scores);
         }
 
-        if(temp == "Replace"){
-            Replace(scores);
+        if(temp == "Remove"){
+            Remove(scores);
         }
 
         if(temp == "End"){
